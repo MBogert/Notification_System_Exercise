@@ -25,7 +25,7 @@ Some command-line operations in the program will only work on a Mac or Linux OS 
 For the sake of streamlining a simple flow, I used pseudo-implementations of a full-fledged SMS and Email system. They both will send one notification to a test user for each Dispatch. (if you'd like your phone to be part of the tests, change value of `TWILIO_RECIPIENT_DEFAULT` to your own number). To view e-mails, sign onto G-mail using the values for these fields:
 
  - `USAIN_EMAIL`
- - `USAIN_PWD` <-- Check e-mail for the password. It's stored in what would be some 3rd party secret store in the real world.
+ - `USAIN_PWD` <-- In the real world this should be in some 3rd party secret store. However, this account is purely for this project, as per why it's on github
 
 # System Design
 
