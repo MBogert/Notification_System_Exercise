@@ -11,9 +11,9 @@ TWILIO_MSG_DEFAULT = 'Welcome to Twilio'
 TWILIO_RECIPIENT_DEFAULT = '+13606897730'
 
 # Email
-EMAIL_MSG_DEFAULT = 'You\'ve received a dispatch, get ready!'
 EMAIL_SUBJECT_DEFAULT = 'IMPORTANT DISPATCH'
 EMAIL_FROM_DEFAULT = 'voluts_dispatch@voltus.com(DO-NOT-REPLY)'
+EMAIL_RECIPIENT_DEFAULT = 'matthew.bogert@workday.com'
 PORT_EMAIL = 1025
 
 # Test Gmail Acct
@@ -28,5 +28,3 @@ SERVER_LOG = 'server_log.log'
 
 DATE_TIME_LOG_FORMAT = '%(asctime)s :: %(name)s :: %(levelname)s :: %(message)s'
 
-# Reference curl commands
-#

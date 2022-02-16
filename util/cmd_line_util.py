@@ -5,6 +5,7 @@ from logger.server_logger import SERVER_LOGGER
 
 def run_email_server():
     try:
+        SERVER_LOGGER.info('Initializing SMTP server on port ' + str(config.PORT_EMAIL))
         subprocess.run('python3 -m smtpd -c DebuggingServer -n localhost:' + str(config.PORT_EMAIL), check=True)
         SERVER_LOGGER.info('Running on port ' + str(config.PORT_EMAIL))
     except subprocess.CalledProcessError as e:
@@ -14,7 +15,7 @@ def run_email_server():
         SERVER_LOGGER.info(e)
         SERVER_LOGGER.info('Email Server Subprocess unexpectedly terminated.')
     except KeyboardInterrupt as e:
-        SERVER_LOGGER.info(e)
+        SERVER_LOGGER.info(str(e))
         SERVER_LOGGER.info('Terminating Email Server')
 
 

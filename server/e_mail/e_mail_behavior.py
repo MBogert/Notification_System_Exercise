@@ -17,7 +17,9 @@ def execute_email_dispatch(dispatch_id):
     # user_emails = user.get_user_emails_for_dispatch(dispatch_id)
     # for e_mail in user_emails:
     #     statuses.append(send_email(e_mail, program_message))
+    # Swap lines 21, 22 to use test account
     status = send_gmail(program_message)
+    # status = send_email(config.EMAIL_RECIPIENT_DEFAULT, program_message)
     return field.STATUS_ERROR if status is field.STATUS_ERROR else field.STATUS_OK
 
 def send_email(e_mail, program_message):

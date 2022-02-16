@@ -24,19 +24,20 @@ class DispatchHandler(BaseHTTPRequestHandler):
         dispatch_timestamp = common.get_current_timestamp()
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length).decode('utf-8')
+
         SERVER_LOGGER.info("POST request,\n" + "Path: " + str(self.path) + "\nHeaders: " + str(self.headers) + "Body:\n" + post_data + "\n")
         id_post_data = common.add_dispatch_id(post_data, dispatch_id).replace("\'", "\"")
         res = dispatch.insert_dispatch(id_post_data)
+
         SERVER_LOGGER.info("Dispatch Response: \n" + str(res) + "\n")
         status = deploy_dispatch(dispatch_id)
-        if status is field.STATUS_OK:
-            SERVER_LOGGER.info("Logging Dispatch Transaction for " + dispatch_id)
-            log_name = cmd.create_transaction_log(dispatch_id)
-            txn_logger.write_transaction_log(log_name, dispatch_id, dispatch_timestamp, status)
-        else:
-            log_name = ''
+
+        SERVER_LOGGER.info("Logging Dispatch Transaction for " + dispatch_id)
+        log_name = cmd.create_transaction_log(dispatch_id)
+        txn_logger.write_transaction_log(log_name, dispatch_id, dispatch_timestamp, status)
         txn_res = dispatch_transaction.create_dispatch_transaction(dispatch_id, dispatch_timestamp, status, log_name)
         SERVER_LOGGER.info("Transaction Response: \n" + str(txn_res) + "\n")
+
         self._set_response(dispatch_id=dispatch_id, status=status, transaction_log=log_name)
 
 # Deploy dispatch among communication mediums
