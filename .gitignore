@@ -1,3 +1,5 @@
 __pycache__/
 *.log
 .idea
+custom_config.py
+venv/
